@@ -183,37 +183,6 @@ main {
     grid-gap: 24px;
 }
 
-@media only screen and (max-width: 600px) {
-    body {
-        font-size: 80%;
-    }
-    .topBar {
-        padding: 8px 16px;
-        grid-template-columns: 1fr;
-        grid-template-areas: "brand""actions" "searchBar";
-        place-items: center;
-    }
-    .topBar .actions {
-        justify-self: initial;
-        margin-bottom: 16px;
-    }
-    .topBar .searchBar {
-        width: 100%;
-        justify-self: initial;
-        display: flex;
-        justify-content: center;
-    }
-    .searchBar:focus-within input[type=text] {
-        width: 100%;
-    }
-    #news {
-        padding: 24px 16px;
-    }
-    .news--grid {
-        margin: 24px 0 0 0;
-    }
-}
-
 .news--item {
     border-radius: 5px;
     transition: .3s ease-in;
@@ -322,6 +291,37 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 80%;
+    }
+    .topBar {
+        padding: 8px 16px;
+        grid-template-columns: 1fr;
+        grid-template-areas: "brand""actions" "searchBar";
+        place-items: center;
+    }
+    .topBar .actions {
+        justify-self: initial;
+        margin-bottom: 16px;
+    }
+    .topBar .searchBar {
+        width: 100%;
+        justify-self: initial;
+        display: flex;
+        justify-content: center;
+    }
+    .searchBar:focus-within input[type=text] {
+        width: 100%;
+    }
+    #news {
+        padding: 24px 16px;
+    }
+    .news--grid {
+        margin: 24px 0 0 0;
+    }
 }
 
 @media only screen and (max-width: 900px) {
