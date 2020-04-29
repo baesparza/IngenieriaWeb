@@ -1,0 +1,334 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f3f3f3;
+    font-size: 90%;
+    min-height: 100vh;
+    position: relative;
+}
+
+.topBar {
+    padding: 8px 16px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "brand actions" "brand searchBar";
+    place-items: center;
+}
+
+.topBar .brand {
+    grid-area: brand;
+    margin: 20px;
+    position: relative;
+    font-size: 40px;
+}
+
+.topBar .brand::before {
+    content: '';
+    position: absolute;
+    bottom: 50%;
+    right: -10px;
+    left: -10px;
+    height: 7px;
+    background-color: #008080;
+    z-index: -1;
+    transform: translateY(50%);
+}
+
+.topBar .actions {
+    grid-area: actions;
+    justify-self: end;
+}
+
+.actions a {
+    font-weight: 500;
+    color: teal;
+    text-decoration: none;
+}
+
+.actions a:not(:last-child) {
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 1px solid teal;
+}
+
+.topBar .searchBar {
+    grid-area: searchBar;
+    justify-self: end;
+}
+
+.searchBar input[type=text] {
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid white;
+    border-radius: 5px 0 0 5px;
+    transition: width 0.4s ease-in-out;
+    width: 200px;
+}
+
+.searchBar:focus-within input[type=text] {
+    border: 2px solid teal;
+    width: 330px;
+}
+
+.searchBar button {
+    padding: 14px 20px;
+    color: teal;
+    background-color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    transition: 0.4s ease-in-out;
+    margin-left: -4px;
+}
+
+.searchBar:focus-within button {
+    color: white;
+    background-color: teal;
+}
+
+main {
+    position: relative;
+    padding-bottom: 35px;
+}
+
+/* main navigation bar styles */
+
+.navbar {
+    z-index: 1200;
+    position: sticky;
+    top: 0;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #f3f3f3;
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, .24);
+}
+
+.navbar .navbar--item {
+    text-decoration: none;
+    color: teal;
+}
+
+/* gallery */
+
+#gallery {
+    position: relative;
+    width: 100%;
+    height: min(100vmin, 524px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: teal;
+    overflow: hidden;
+}
+
+#gallery h2 {
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-size: 10em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 800;
+    transform: translate(-50%, -50%);
+}
+
+#gallery h2:first-child {
+    display: none
+}
+
+#gallery h2:nth-child(2) {
+    display: initial
+}
+
+#gallery img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 600;
+}
+
+/* news */
+
+#news {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 54px;
+}
+
+#news>h3 {
+    color: teal;
+    font-size: 1.7em;
+    font-weight: 600;
+}
+
+.news--grid {
+    margin: 64px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax( 350px, 1fr));
+    grid-gap: 24px;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 80%;
+    }
+    .topBar {
+        padding: 8px 16px;
+        grid-template-columns: 1fr;
+        grid-template-areas: "brand""actions" "searchBar";
+        place-items: center;
+    }
+    .topBar .actions {
+        justify-self: initial;
+        margin-bottom: 16px;
+    }
+    .topBar .searchBar {
+        width: 100%;
+        justify-self: initial;
+        display: flex;
+        justify-content: center;
+    }
+    .searchBar:focus-within input[type=text] {
+        width: 100%;
+    }
+    #news {
+        padding: 24px 16px;
+    }
+    .news--grid {
+        margin: 24px 0 0 0;
+    }
+}
+
+.news--item {
+    border-radius: 5px;
+    transition: .3s ease-in;
+    border: 2px solid #f3f3f3;
+}
+
+.news--item:hover {
+    border: 2px solid rgba(0, 128, 128, 0.616);
+}
+
+.news--item figure {
+    width: 100%;
+    position: relative;
+}
+
+.news--item figure:after {
+    content: "";
+    display: block;
+    padding-bottom: 56%;
+}
+
+.news--item figure img {
+    border-radius: 5px 5px 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news--item .content {
+    padding: 24px;
+    overflow: hidden;
+}
+
+.news--item .content h3 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 16px;
+}
+
+.news--item .content p {
+    color: #313131;
+    text-align: justify;
+    margin-bottom: 16px;
+}
+
+.news--item .content a {
+    color: teal;
+    text-decoration: none;
+    padding: 10px 6PX;
+    transition: 0.2s;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 5px;
+}
+
+.news--item a:hover {
+    color: white;
+    background-color: rgb(0, 128, 128);
+}
+
+#sponsors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(211, 211, 211, 0.554);
+    padding: 54px;
+}
+
+#sponsors h3 {
+    color: teal;
+    font-size: 1.7em;
+    font-weight: 600;
+    margin-bottom: 36px;
+}
+
+#sponsors .row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+#sponsors .row .fab, #sponsors .row .fas {
+    font-size: 100px;
+    color: rgb(158, 158, 158);
+    transition: .4s;
+    margin: 10px 20px;
+}
+
+#sponsors .row .fab:hover, #sponsors .row .fas:hover {
+    color: teal;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 35px;
+    background-color: #efefef;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 900px) {
+    #gallery h2:first-child {
+        display: initial
+    }
+    #gallery h2:nth-child(2) {
+        display: none
+    }
+}
